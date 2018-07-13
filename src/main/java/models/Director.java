@@ -1,4 +1,6 @@
 package models;
 
-public class Director {
+public class Director extends Employee {
+
+
 }
