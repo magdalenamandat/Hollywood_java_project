@@ -1,3 +1,4 @@
+import db.DBActor;
 import db.DBHelper;
 import models.Actor;
 import models.Director;
@@ -26,5 +27,14 @@ public class Runner {
 
         Actor actor1 = new Actor("Christian", "Nolan");
         DBHelper.save(actor1);
+        Actor actor2 = new Actor("Anne", "Hathaway");
+        DBHelper.save(actor1);
+
+        DBActor.addActorToFilm(actor1, film1);
+        DBActor.addActorToFilm(actor2, film1);
+
+        actor1.addFilm(film1);
+
+
     }
 }

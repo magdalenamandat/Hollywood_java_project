@@ -29,4 +29,12 @@ public class DBActor {
         }
         return results;
     }
+
+    public static void addActorToFilm(Actor actor, Film film){
+        actor.addFilm(film);
+        film.addActor(actor);
+        DBHelper.update(actor);
+    }
+
+
 }

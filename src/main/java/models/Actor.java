@@ -2,11 +2,12 @@ package models;
 
 import org.hibernate.annotations.Cascade;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name="actors")
 public class Actor extends Employee {
 
     private List<Film> films;
@@ -16,7 +17,7 @@ public class Actor extends Employee {
 
     public Actor(String firstName, String lastName) {
         super(firstName, lastName);
-        this.films = films;
+        this.films = new ArrayList<Film>();
     }
 
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
@@ -31,5 +32,9 @@ public class Actor extends Employee {
 
     public void setFilms(List<Film> films) {
         this.films = films;
+    }
+
+    public void addFilm(Film film){
+        this.films.add(film);
     }
 }

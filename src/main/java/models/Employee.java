@@ -1,9 +1,10 @@
 package models;
 
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name="employees")
 public abstract class Employee {
     private int id;
     private String firstName;
@@ -18,6 +19,10 @@ public abstract class Employee {
         this.lastName = lastName;
     }
 
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -26,6 +31,7 @@ public abstract class Employee {
         this.id = id;
     }
 
+    @Column(name = "lastName")
     public String getLastName() {
         return lastName;
     }
@@ -34,6 +40,7 @@ public abstract class Employee {
         this.lastName = lastName;
     }
 
+    @Column(name = "firstName")
     public String getFirstName() {
         return firstName;
     }

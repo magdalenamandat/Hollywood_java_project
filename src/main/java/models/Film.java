@@ -3,6 +3,7 @@ package models;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,6 +22,7 @@ public class Film {
         this.title = title;
         this.director = director;
         this.studio = studio;
+        this.actors = new ArrayList<Actor>();
     }
 
     @Id
@@ -59,6 +61,7 @@ public class Film {
             joinColumns = {@JoinColumn(name = "film_id", nullable = false, updatable = false)},
             inverseJoinColumns = {@JoinColumn(name = "actor_id", nullable = false, updatable = false)}
     )
+
     public List<Actor> getActors() {
         return actors;
     }
@@ -67,6 +70,8 @@ public class Film {
         this.actors = actors;
     }
 
+    @ManyToOne
+    @JoinColumn(name="studio_id", nullable=false)
     public Studio getStudio() {
         return studio;
     }
@@ -74,4 +79,10 @@ public class Film {
     public void setStudio(Studio studio) {
         this.studio = studio;
     }
+
+    public void addActor(Actor actor){
+        this.actors.add(actor);
+    }
+
+
 }

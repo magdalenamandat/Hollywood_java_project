@@ -1,9 +1,14 @@
 package models;
 
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "directors")
 public class Director extends Employee {
 
     private List<Film> films;
@@ -13,7 +18,7 @@ public class Director extends Employee {
 
     public Director(String firstName, String lastName) {
         super(firstName, lastName);
-        this.films = films;
+        this.films = new ArrayList<Film>();
     }
 
     @OneToMany(mappedBy="director", fetch = FetchType.LAZY)
@@ -23,5 +28,9 @@ public class Director extends Employee {
 
     public void setFilms(List<Film> films) {
         this.films = films;
+    }
+
+    public void addFilm(Film film){
+        this.films.add(film);
     }
 }
