@@ -1,7 +1,10 @@
 package models;
 
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "films")
 public class Film {
 
     private int id;
@@ -18,6 +21,9 @@ public class Film {
         this.studio = studio;
     }
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -26,6 +32,7 @@ public class Film {
         this.id = id;
     }
 
+    @Column(name = "title")
     public String getTitle() {
         return title;
     }
@@ -34,6 +41,8 @@ public class Film {
         this.title = title;
     }
 
+    @ManyToOne
+    @JoinColumn(name="director_id", nullable=false)
     public Director getDirector() {
         return director;
     }
@@ -41,6 +50,7 @@ public class Film {
     public void setDirector(Director director) {
         this.director = director;
     }
+
 
     public List<Actor> getActors() {
         return actors;

@@ -1,12 +1,14 @@
 package models;
 
+import javax.persistence.FetchType;
+import javax.persistence.OneToMany;
 import java.util.List;
 
 public abstract class Employee {
     private int id;
     private String firstName;
     private String lastName;
-    private List<Film> films;
+
 
     public Employee() {
     }
@@ -40,12 +42,7 @@ public abstract class Employee {
         this.firstName = firstName;
     }
 
-    public List<Film> getFilms() {
-        return films;
-    }
 
-    public void setFilms(List<Film> films) {
-        this.films = films;
-    }
+
 }
 
