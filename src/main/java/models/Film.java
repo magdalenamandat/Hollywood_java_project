@@ -14,6 +14,8 @@ public class Film {
 
     public Film(String title, Director director, Studio studio){
         this.title = title;
+        this.director = director;
+        this.studio = studio;
     }
 
     public int getId() {
